@@ -7,6 +7,7 @@
 peld_abund_rel(
   dados,
   subsistema = "geral",
+  top_n = 14,
   especie_var = especie,
   lab_var = lab,
   lfe_var = lfe,
@@ -17,6 +18,8 @@ peld_abund_rel(
 \item{dados}{Tabela de dados do PELD}
 
 \item{subsistema}{Subsistema indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
+
+\item{top_n}{Número de espécies a serem consideradas antes de "Outros". 14 por padrao.}
 
 \item{especie_var}{Nome da variável referente a "Espécie". "especie" por padrao.}
 

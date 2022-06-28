@@ -2,6 +2,7 @@
 #'
 #' @param dados Tabela de dados do PELD
 #' @param subsistema Subsistema indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.
+#' @param top_n Número de espécies a serem consideradas antes de "Outros". 14 por padrao.
 #' @param especie_var Nome da variável referente a "Espécie". "especie" por padrao.
 #' @param lab_var Nome da variável referente a "Lagoas abertas". "lab" por padrao.
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
@@ -11,6 +12,7 @@
 #' @export
 peld_abund_rel <- function(dados,
                            subsistema = "geral",
+                           top_n = 14,
                            especie_var = especie,
                            lab_var = lab,
                            lfe_var = lfe,
@@ -44,12 +46,12 @@ peld_abund_rel <- function(dados,
       dplyr::arrange(-total_sp) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(rank = dplyr::row_number(),
-                    rank = ifelse(rank > 14, 15,rank)) %>%
+                    rank = ifelse(rank > top_n, top_n+1,rank)) %>%
       dplyr::group_by(rank) %>%
-      dplyr::mutate(total_rank = sum(total_sp),
-                    abund_rel = total_rank/total_geral,
-                    especie = ifelse(rank > 14, "Outros", especie)) %>%
-      head(15)
+      dplyr::mutate(total_sp = sum(total_sp),
+                    abund_rel = total_sp/total_geral,
+                    especie = ifelse(rank > top_n, "Outros", especie)) %>%
+      head(top_n+1)
 
   }else{
     var <- subsistema
@@ -67,12 +69,12 @@ peld_abund_rel <- function(dados,
       dplyr::arrange(-total_sp) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(rank = dplyr::row_number(),
-                    rank = ifelse(rank > 14, 15,rank)) %>%
+                    rank = ifelse(rank > top_n, top_n+1,rank)) %>%
       dplyr::group_by(rank) %>%
-      dplyr::mutate(total_rank = sum(total_sp),
-                    abund_rel = total_rank/total_geral,
-                    especie = ifelse(rank > 14, "Outros", especie)) %>%
-      head(15)
+      dplyr::mutate(total_sp = sum(total_sp),
+                    abund_rel = total_sp/total_geral,
+                    especie = ifelse(rank > top_n, "Outros", especie)) %>%
+      head(top_n+1)
   }
 
   return(abund_rel)
