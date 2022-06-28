@@ -26,9 +26,6 @@ peld_shannon(
 
 \item{rio_var}{Nome da variável referente a "Rios". "rio" por padrao.}
 }
-\value{
-
-}
 \description{
 PELD: Diversidade de Shannon (H')
 }

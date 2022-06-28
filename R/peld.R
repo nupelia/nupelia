@@ -8,7 +8,8 @@
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
 #' @param rio_var Nome da variável referente a "Rios". "rio" por padrao.
 #'
-#' @return
+#' @importFrom dplyr %>%
+#' @importFrom utils head
 #' @export
 peld_abund_rel <- function(dados,
                            subsistema = "geral",
@@ -46,12 +47,13 @@ peld_abund_rel <- function(dados,
       dplyr::arrange(-total_sp) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(rank = dplyr::row_number(),
-                    rank = ifelse(rank > top_n, top_n+1,rank)) %>%
+                    rank = ifelse(rank > top_n, top_n+1, rank)) %>%
       dplyr::group_by(rank) %>%
       dplyr::mutate(total_sp = sum(total_sp),
                     abund_rel = total_sp/total_geral,
                     especie = ifelse(rank > top_n, "Outros", especie)) %>%
-      head(top_n+1)
+      head(top_n+1) %>%
+      dplyr::ungroup()
 
   }else{
     var <- subsistema
@@ -60,12 +62,12 @@ peld_abund_rel <- function(dados,
       tidyr::pivot_longer(
         cols = var,
         names_to = "subsistema",
-        values_to = "n"
+        values_to = "total_sp"
       ) %>%
-      dplyr::select(especie, subsistema, n) %>%
-      dplyr::mutate(total_geral = sum(n, na.rm = TRUE)) %>%
+      dplyr::select(especie, subsistema, total_sp) %>%
+      dplyr::mutate(total_geral = sum(total_sp, na.rm = TRUE)) %>%
       dplyr::group_by(especie) %>%
-      dplyr::mutate(total_sp = sum(n, na.rm = TRUE)) %>%
+      dplyr::mutate(total_sp = sum(total_sp, na.rm = TRUE)) %>%
       dplyr::arrange(-total_sp) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(rank = dplyr::row_number(),
@@ -74,7 +76,8 @@ peld_abund_rel <- function(dados,
       dplyr::mutate(total_sp = sum(total_sp),
                     abund_rel = total_sp/total_geral,
                     especie = ifelse(rank > top_n, "Outros", especie)) %>%
-      head(top_n+1)
+      head(top_n+1) %>%
+      dplyr::ungroup()
   }
 
   return(abund_rel)
@@ -90,7 +93,6 @@ peld_abund_rel <- function(dados,
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
 #' @param rio_var Nome da variável referente a "Rios". "rio" por padrao.
 #'
-#' @return
 #' @export
 peld_riqueza <- function(dados,
                          subsistema = "geral",
@@ -132,7 +134,6 @@ peld_riqueza <- function(dados,
 
 }
 
-
 #' PELD: Diversidade de Shannon (H')
 #'
 #' @param dados Tabela de dados do PELD
@@ -142,7 +143,6 @@ peld_riqueza <- function(dados,
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
 #' @param rio_var Nome da variável referente a "Rios". "rio" por padrao.
 #'
-#' @return
 #' @export
 peld_shannon <- function(dados,
                          subsistema = "geral",
@@ -194,7 +194,6 @@ peld_shannon <- function(dados,
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
 #' @param rio_var Nome da variável referente a "Rios". "rio" por padrao.
 #'
-#' @return
 #' @export
 peld_equitabilidade <- function(dados,
                                 subsistema = "geral",

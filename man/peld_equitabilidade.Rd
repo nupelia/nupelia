@@ -26,9 +26,6 @@ peld_equitabilidade(
 
 \item{rio_var}{Nome da variável referente a "Rios". "rio" por padrao.}
 }
-\value{
-
-}
 \description{
 PELD: Equitabilidade de Pielou (J)
 }

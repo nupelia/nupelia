@@ -29,9 +29,6 @@ peld_abund_rel(
 
 \item{rio_var}{Nome da variável referente a "Rios". "rio" por padrao.}
 }
-\value{
-
-}
 \description{
 PELD: Abundância relativa
 }
