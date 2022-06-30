@@ -17,14 +17,12 @@ peld_abrevia_especie <- function(dados){
     dplyr::mutate(especie = ifelse(rep > 1,
                                    stringr::str_replace(especie, "\\w+", paste0(stringr::str_extract(especie, "\\w{3}"),".")),
                                    especie_draft)) %>%
-    dplyr::select(-c(rep,especie_draft))
+    dplyr::select(-c(rep,especie_draft)) %>%
+    dplyr::as_tibble()
 
   return(dados2)
 
 }
-
-
-
 
 #' PELD: Abundância relativa
 #'

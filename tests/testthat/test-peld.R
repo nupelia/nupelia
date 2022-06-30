@@ -1,3 +1,22 @@
+test_that("peld_abrevia_especie", {
+
+  test_df <- data.frame(
+    especie = c("Acestrorhynchus lacustris",
+                "Aequidens plagiozonatus",
+                "Ageneiosus inermis",
+                "Ageneiosus ucayalensis",
+                "Astyanax lacustris"),
+    lab = 1:5,
+    lfe = 2:6,
+    rio = 3:7
+  )
+
+  data_abrevia <- peld_abrevia_especie(test_df)
+
+  expect_s3_class(data_abrevia, "tbl_df")
+  expect_true(nrow(data_abrevia) == 5)
+})
+
 test_that("peld_abund", {
 
   test_df <- data.frame(
