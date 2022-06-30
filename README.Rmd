@@ -35,7 +35,7 @@ devtools::install_github("Nupelia/nupelia")
 
 Antes de começar, é necessário ter o arquivo de uma tabela do PELD com o seguinte formato:
 
-**(É necessario que as colunas sejam escritas dessa forma)**
+**(É necessário que o nome das colunas seja escrito dessa forma)**
 
 ```{r, echo=FALSE,warning=FALSE,message=FALSE,results='asis'}
 library(knitr)
@@ -147,10 +147,9 @@ tabela_peld_exemplo %>%
   kable()
 ```
 
-
 ### Função `peld_equitabilidade()`
 
-Também é possível calcular o índice de Equabilidade de Pielou (J') para cada subsistema.
+Também é possível calcular o índice de Equitabilidade de Pielou (J') para cada subsistema.
 
 ```{r, eval=FALSE}
 tabela_peld_exemplo %>% 

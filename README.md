@@ -24,7 +24,7 @@ devtools::install_github("Nupelia/nupelia")
 Antes de começar, é necessário ter o arquivo de uma tabela do PELD com o
 seguinte formato:
 
-**(É necessario que as colunas sejam escritas dessa forma)**
+**(É necessário que o nome das colunas seja escrito dessa forma)**
 
 | especie                   | lab | lfe | rio |
 |:--------------------------|----:|----:|----:|
@@ -133,8 +133,8 @@ tabela_peld_exemplo %>%
 
 ### Função `peld_equitabilidade()`
 
-Também é possível calcular o índice de Equabilidade de Pielou (J’) para
-cada subsistema.
+Também é possível calcular o índice de Equitabilidade de Pielou (J’)
+para cada subsistema.
 
 ``` r
 tabela_peld_exemplo %>% 
