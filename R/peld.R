@@ -1,3 +1,31 @@
+#' PELD: Abrevia espécie
+#'
+#' @param dados Tabela de dados do PELD
+#'
+#' @importFrom dplyr %>%
+#' @importFrom utils head
+#'
+#' @export
+
+peld_abrevia_especie <- function(dados){
+
+  dados2 <- dados %>%
+    dplyr::mutate(especie_draft = dplyr::case_when(stringr::str_detect(especie, "sp.") == TRUE ~ especie,
+                                            stringr::str_detect(especie, "sp.") == FALSE ~
+                                              stringr::str_replace(especie, "\\w+", paste0(stringr::str_extract(especie, "\\w"),".")))) %>%
+    dplyr::add_count(especie_draft, name = "rep") %>%
+    dplyr::mutate(especie = ifelse(rep > 1,
+                                   stringr::str_replace(especie, "\\w+", paste0(stringr::str_extract(especie, "\\w{3}"),".")),
+                                   especie_draft)) %>%
+    dplyr::select(-c(rep,especie_draft))
+
+  return(dados2)
+
+}
+
+
+
+
 #' PELD: Abundância relativa
 #'
 #' @param dados Tabela de dados do PELD
@@ -8,8 +36,6 @@
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
 #' @param rio_var Nome da variável referente a "Rios". "rio" por padrao.
 #'
-#' @importFrom dplyr %>%
-#' @importFrom utils head
 #' @export
 peld_abund_rel <- function(dados,
                            subsistema = "geral",
