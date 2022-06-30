@@ -20,11 +20,147 @@ knitr::opts_chunk$set(
 
 Pacote de auxílio para relatórios do PELD
 
-## Installation
+## Instalação
 
-You can install the development version of nupelia from [GitHub](https://github.com/) with:
+Você pode instalar esse pacote pelo github utilizando o código:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("Nupelia/nupelia")
+```
+
+## Uso
+
+## Funções PELD
+
+Antes de começar, é necessário ter o arquivo de uma tabela do PELD com o seguinte formato:
+
+**(É necessario que as colunas sejam escritas dessa forma)**
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE,results='asis'}
+library(knitr)
+library(dplyr)
+library(nupelia)
+tabela_peld_exemplo <- data.frame(
+  especie = c("Acestrorhynchus lacustris",
+              "Aequidens plagiozonatus",
+              "Ageneiosus inermis",
+              "Ageneiosus ucayalensis",
+              "Astyanax lacustris"),
+  lab = c(7,2,8,3,16),
+  lfe = c(NA,2,NA,NA,38),
+  rio = c(5,NA,7,NA,12)
+)
+
+options(knitr.kable.NA = '')
+kable(tabela_peld_exemplo)
+```
+
+### Função `peld_abrevia_especie()`
+
+Essa função tem como objetivo abreviar o gênero em nomes científicos para facilitar a leitura posterior.
+Caso os nomes abreviados fiquem idênticos (como A. lacustris para Acestrorhynchus lacustris e Astyanax lacustris, por exemplo), são utilizadas as 3 primeiras letras do gênero.
+
+A tabela apresentada acima ficaria da seguinte forma:
+
+```{r, eval=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie()
+```
+
+```{r, echo=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  kable()
+```
+
+### Função `peld_abund_rel()`
+
+Essa função permite calcular a abundância relativa de espécies, seja considerando todos os subsistemas ou algum em específico
+
+Existem alguns argumento nessa função:
+
+- `dados`: A tabela de dados
+- `subsistema`: O subsistema indicado para análise. Pode ser "lab", "lfe", "rio" ou "geral" caso seja para todos. O padrão é "geral".
+- `top_n`: O número de espécies a serem apresentadas, além disso serão consideradas como **"Outros"**. O padrão é 14.
+
+```{r, eval=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_abund_rel(top_n = 3)
+```
+
+```{r, echo=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_abund_rel(top_n = 3) %>% 
+  kable()
+```
+
+
+Caso queira fazer para um subsistema específico, utilize o argumento `subsistema`:
+
+```{r, eval=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_abund_rel(subsistema = "lab", top_n = 3)
+```
+
+```{r, echo=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_abund_rel(subsistema = "lab", top_n = 3) %>% 
+  kable()
+```
+
+### Função `peld_riqueza()`
+
+Utilize essa função para calcular a riqueza (S) em cada subsistema.
+
+```{r, eval=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_riqueza()
+```
+
+```{r, echo=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_riqueza() %>% 
+  kable()
+```
+
+### Função `peld_shannon()`
+
+Essa função retorna o índice de diversidade Shannon (H') para cada subsistema.
+
+```{r, eval=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_shannon()
+```
+
+```{r, echo=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_shannon() %>% 
+  kable()
+```
+
+
+### Função `peld_equitabilidade()`
+
+Também é possível calcular o índice de Equabilidade de Pielou (J') para cada subsistema.
+
+```{r, eval=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_equitabilidade()
+```
+
+```{r, echo=FALSE}
+tabela_peld_exemplo %>% 
+  peld_abrevia_especie() %>% 
+  peld_equitabilidade() %>% 
+  kable()
 ```
