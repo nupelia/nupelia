@@ -8,6 +8,8 @@
 
 Pacote de auxílio para relatórios do PELD
 
+Esse pacote foi criado por Bruno H. Mioto Stabile
+
 ## Instalação
 
 Você pode instalar esse pacote pelo github utilizando o código:
