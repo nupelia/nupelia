@@ -72,15 +72,16 @@ Existem alguns argumento nessa função:
 ``` r
 tabela_peld_exemplo %>% 
   peld_abrevia_especie() %>% 
-  peld_abund_rel(top_n = 3)
+  peld_abund_rel()
 ```
 
-| especie        | total_sp | total_geral | rank | abund_rel |
-|:---------------|---------:|------------:|-----:|----------:|
-| Ast. lacustris |       66 |         100 |    1 |      0.66 |
-| A. inermis     |       15 |         100 |    2 |      0.15 |
-| Ace. lacustris |       12 |         100 |    3 |      0.12 |
-| Outros         |        7 |         100 |    4 |      0.07 |
+| especie          | total_sp | total_geral | abund_rel_porcentagem |
+|:-----------------|---------:|------------:|----------------------:|
+| Ast. lacustris   |       66 |         100 |                    66 |
+| A. inermis       |       15 |         100 |                    15 |
+| Ace. lacustris   |       12 |         100 |                    12 |
+| A. plagiozonatus |        4 |         100 |                     4 |
+| A. ucayalensis   |        3 |         100 |                     3 |
 
 Caso queira fazer para um subsistema específico, utilize o argumento
 `subsistema`:
@@ -88,15 +89,16 @@ Caso queira fazer para um subsistema específico, utilize o argumento
 ``` r
 tabela_peld_exemplo %>% 
   peld_abrevia_especie() %>% 
-  peld_abund_rel(subsistema = "lab", top_n = 3)
+  peld_abund_rel(subsistema = "lab")
 ```
 
-| especie        | subsistema | total_sp | total_geral | rank | abund_rel |
-|:---------------|:-----------|---------:|------------:|-----:|----------:|
-| Ast. lacustris | lab        |       16 |          36 |    1 | 0.4444444 |
-| A. inermis     | lab        |        8 |          36 |    2 | 0.2222222 |
-| Ace. lacustris | lab        |        7 |          36 |    3 | 0.1944444 |
-| Outros         | lab        |        5 |          36 |    4 | 0.1388889 |
+| especie          | subsistema | total_sp | total_geral | abund_rel_porcentagem |
+|:-----------------|:-----------|---------:|------------:|----------------------:|
+| Ast. lacustris   | lab        |       16 |          36 |                 44.44 |
+| A. inermis       | lab        |        8 |          36 |                 22.22 |
+| Ace. lacustris   | lab        |        7 |          36 |                 19.44 |
+| A. ucayalensis   | lab        |        3 |          36 |                  8.33 |
+| A. plagiozonatus | lab        |        2 |          36 |                  5.56 |
 
 ### Função `peld_riqueza()`
 
@@ -147,3 +149,26 @@ tabela_peld_exemplo %>%
 | lab        | 0.3852996 |
 | lfe        | 0.0538145 |
 | rio        | 0.3249611 |
+
+### Tabela de locais de amostragem do PELD
+
+O pacote possui um dataset com dados de todos os locais de amostragem já
+utilizados no PELD. Para uso, basta utilizar `peld_locais`.
+
+``` r
+peld_locais
+#> # A tibble: 36 x 5
+#>    ambiente_tipo ambiente_nome            ambiente_codigo coordenada       desc 
+#>    <chr>         <chr>                    <chr>           <chr>            <chr>
+#>  1 Lagoa Fechada Lagoa do Ventura         LVEN            "22º51'23.7\"S,~ Lago~
+#>  2 Lagoa Fechada Lagoa Zé do Paco         LZEP            "22º50'3.72\"S,~ Lago~
+#>  3 Lagoa Fechada Lagoa Jacaré             LJAC            "22º47'2.04\"S,~ Lago~
+#>  4 Lagoa Fechada Lagoa do Cervo           LCER            "22º46'29.58\"S~ Lago~
+#>  5 Lagoa Fechada Lagoa Capivara           LCAP            "22º47'56.52\"S~ Com ~
+#>  6 Lagoa Fechada Lagoa Fechada            LFEC            "22º42'37.92\"S~ Lago~
+#>  7 Lagoa Fechada Lagoa Pousada das Garças LPGA            "22º42'1.14\"S,~ Lago~
+#>  8 Lagoa Fechada Lagoa Traíra             LTRA            "22º44'45.6\"S,~ Pequ~
+#>  9 Lagoa Fechada Lagoa do Aurélio         LAUR            "22º41'34.68\"S~ Pequ~
+#> 10 Lagoa Fechada Lagoa Pousada            LPOU            "22º44'41.76\"S~ Loca~
+#> # ... with 26 more rows
+```

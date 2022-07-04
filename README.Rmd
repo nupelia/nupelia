@@ -87,13 +87,13 @@ Existem alguns argumento nessa função:
 ```{r, eval=FALSE}
 tabela_peld_exemplo %>% 
   peld_abrevia_especie() %>% 
-  peld_abund_rel(top_n = 3)
+  peld_abund_rel()
 ```
 
 ```{r, echo=FALSE}
 tabela_peld_exemplo %>% 
   peld_abrevia_especie() %>% 
-  peld_abund_rel(top_n = 3) %>% 
+  peld_abund_rel() %>% 
   kable()
 ```
 
@@ -103,13 +103,13 @@ Caso queira fazer para um subsistema específico, utilize o argumento `subsistem
 ```{r, eval=FALSE}
 tabela_peld_exemplo %>% 
   peld_abrevia_especie() %>% 
-  peld_abund_rel(subsistema = "lab", top_n = 3)
+  peld_abund_rel(subsistema = "lab")
 ```
 
 ```{r, echo=FALSE}
 tabela_peld_exemplo %>% 
   peld_abrevia_especie() %>% 
-  peld_abund_rel(subsistema = "lab", top_n = 3) %>% 
+  peld_abund_rel(subsistema = "lab") %>% 
   kable()
 ```
 
@@ -163,3 +163,15 @@ tabela_peld_exemplo %>%
   peld_equitabilidade() %>% 
   kable()
 ```
+
+### Tabela de locais de amostragem do PELD
+
+O pacote possui um dataset com dados de todos os locais de amostragem já utilizados no PELD.
+Para uso, basta utilizar `peld_locais`.
+
+```{r, eval=TRUE}
+peld_locais
+```
+
+
+
