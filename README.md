@@ -36,10 +36,10 @@ seguinte formato:
 
 | especie                   | lab | lfe | rio |
 |:--------------------------|----:|----:|----:|
-| Acestrorhynchus lacustris |   7 |     |   5 |
-| Aequidens plagiozonatus   |   2 |   2 |     |
-| Ageneiosus inermis        |   8 |     |   7 |
-| Ageneiosus ucayalensis    |   3 |     |     |
+| Acestrorhynchus lacustris |   7 |     |   6 |
+| Aequidens plagiozonatus   |   1 |   1 |     |
+| Ageneiosus inermis        |   8 |   4 |   7 |
+| Ageneiosus ucayalensis    |   1 |     |     |
 | Astyanax lacustris        |  16 |  38 |  12 |
 
 ### Função `peld_abrevia_especie()`
@@ -60,10 +60,10 @@ tabela_peld_exemplo2
 
 | especie          | lab | lfe | rio |
 |:-----------------|----:|----:|----:|
-| Ace. lacustris   |   7 |     |   5 |
-| A. plagiozonatus |   2 |   2 |     |
-| A. inermis       |   8 |     |   7 |
-| A. ucayalensis   |   3 |     |     |
+| Ace. lacustris   |   7 |     |   6 |
+| A. plagiozonatus |   1 |   1 |     |
+| A. inermis       |   8 |   4 |   7 |
+| A. ucayalensis   |   1 |     |     |
 | Ast. lacustris   |  16 |  38 |  12 |
 
 ### Função `peld_abund_rel()`
@@ -85,13 +85,12 @@ tabela_peld_exemplo2 %>%
   peld_abund_rel()
 ```
 
-| especie          | total_sp | total_geral | abund_rel_porcentagem |
-|:-----------------|---------:|------------:|----------------------:|
-| Ast. lacustris   |       66 |         100 |                    66 |
-| A. inermis       |       15 |         100 |                    15 |
-| Ace. lacustris   |       12 |         100 |                    12 |
-| A. plagiozonatus |        4 |         100 |                     4 |
-| A. ucayalensis   |        3 |         100 |                     3 |
+| especie        | total_sp | total_geral | abund_rel_porcentagem |
+|:---------------|---------:|------------:|----------------------:|
+| Ast. lacustris |       66 |         101 |                 65.35 |
+| A. inermis     |       19 |         101 |                 18.81 |
+| Ace. lacustris |       13 |         101 |                 12.87 |
+| Outros         |        3 |         101 |                  2.97 |
 
 Caso queira fazer para um subsistema específico, utilize o argumento
 `subsistema`:
@@ -103,11 +102,11 @@ tabela_peld_exemplo2 %>%
 
 | especie          | subsistema | total_sp | total_geral | abund_rel_porcentagem |
 |:-----------------|:-----------|---------:|------------:|----------------------:|
-| Ast. lacustris   | lab        |       16 |          36 |                 44.44 |
-| A. inermis       | lab        |        8 |          36 |                 22.22 |
-| Ace. lacustris   | lab        |        7 |          36 |                 19.44 |
-| A. ucayalensis   | lab        |        3 |          36 |                  8.33 |
-| A. plagiozonatus | lab        |        2 |          36 |                  5.56 |
+| Ast. lacustris   | lab        |       16 |          33 |                 48.48 |
+| A. inermis       | lab        |        8 |          33 |                 24.24 |
+| Ace. lacustris   | lab        |        7 |          33 |                 21.21 |
+| A. plagiozonatus | lab        |        1 |          33 |                  3.03 |
+| A. ucayalensis   | lab        |        1 |          33 |                  3.03 |
 
 ### Função `peld_riqueza()`
 
@@ -121,7 +120,7 @@ tabela_peld_exemplo2 %>%
 | subsistema | riqueza |
 |:-----------|--------:|
 | lab        |       5 |
-| lfe        |       2 |
+| lfe        |       3 |
 | rio        |       3 |
 
 ### Função `peld_shannon()`
@@ -136,9 +135,9 @@ tabela_peld_exemplo2 %>%
 
 | subsistema |   shannon |
 |:-----------|----------:|
-| lab        | 1.3807285 |
-| lfe        | 0.1985152 |
-| rio        | 1.0327438 |
+| lab        | 1.2353463 |
+| lfe        | 0.4176315 |
+| rio        | 1.0512435 |
 
 ### Função `peld_equitabilidade()`
 
@@ -152,9 +151,9 @@ tabela_peld_exemplo2 %>%
 
 | subsistema |     equit |
 |:-----------|----------:|
-| lab        | 0.3852996 |
-| lfe        | 0.0538145 |
-| rio        | 0.3249611 |
+| lab        | 0.3533086 |
+| lfe        | 0.1110368 |
+| rio        | 0.3265872 |
 
 ### Tabela de locais de amostragem do PELD
 

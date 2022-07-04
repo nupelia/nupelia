@@ -52,9 +52,9 @@ tabela_peld_exemplo <- data.frame(
               "Ageneiosus inermis",
               "Ageneiosus ucayalensis",
               "Astyanax lacustris"),
-  lab = c(7,2,8,3,16),
-  lfe = c(NA,2,NA,NA,38),
-  rio = c(5,NA,7,NA,12)
+  lab = c(7,1,8,1,16),
+  lfe = c(NA,1,4,NA,38),
+  rio = c(6,NA,7,NA,12)
 )
 
 options(knitr.kable.NA = '')
