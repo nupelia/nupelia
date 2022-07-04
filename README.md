@@ -6,7 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-Pacote de auxílio para relatórios do PELD
+Pacote para uso do Núcleo de Pesquisas em Limnologia, Ictiologia e
+Aquicultura (Nupélia). Pode ser utilizado como auxílio para relatórios
+do PELD - sítio 6.
 
 Esse pacote foi criado por Bruno H. Mioto Stabile
 
@@ -163,7 +165,7 @@ Serão retornados 36 ambientes, com as seguintes variáveis:
 -   `ambiente_tipo`: Tipo do ambiente
 -   `ambiente_nome`: Nome do ambiente
 -   `ambiente_codigo`: Codigo do ambiente
--   `coordenada`: Coordenadas do ambiente, no padrão 00º’00.00”S,
+-   `coordenadas`: Coordenadas do ambiente, no padrão 00º’00.00”S,
     00º00’00.00”W
 -   `desc`: A descrição do ambiente
 

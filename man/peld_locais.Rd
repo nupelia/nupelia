@@ -11,7 +11,7 @@ Um data frame com 36 observções e 5 variáveis:
 \item{ambiente_tipo}{Tipo do ambiente}
 \item{ambiente_nome}{Nome do ambiente}
 \item{ambiente_codigo}{Codigo do ambiente}
-\item{coordenada}{Coordenadas do ambiente, no padrão 00º'00.00"S, 00º00'00.00"W}
+\item{coordenadas}{Coordenadas do ambiente, no padrão 00º'00.00"S, 00º00'00.00"W}
 \item{desc}{A descrição do ambiente}
 }
 }
