@@ -69,13 +69,17 @@ Caso os nomes abreviados fiquem idênticos (como A. lacustris para Acestrorhynch
 A tabela apresentada acima ficaria da seguinte forma:
 
 ```{r, eval=FALSE}
-tabela_peld_exemplo %>% 
+tabela_peld_exemplo2 <- tabela_peld_exemplo %>%
   peld_abrevia_especie()
+
+tabela_peld_exemplo2
 ```
 
 ```{r, echo=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 <- tabela_peld_exemplo %>% 
+  peld_abrevia_especie() 
+
+tabela_peld_exemplo2%>% 
   kable()
 ```
 
@@ -90,14 +94,12 @@ Existem alguns argumento nessa função:
 - `porcentagem_corte`: A porcentagem da abundância relativa utilizada como corte para espécies. Espécies com porcentagem menor serão agrupadas em **"Outros"**. 2 por padrão.
 
 ```{r, eval=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_abund_rel()
 ```
 
 ```{r, echo=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_abund_rel() %>% 
   kable()
 ```
@@ -106,14 +108,12 @@ tabela_peld_exemplo %>%
 Caso queira fazer para um subsistema específico, utilize o argumento `subsistema`:
 
 ```{r, eval=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_abund_rel(subsistema = "lab")
 ```
 
 ```{r, echo=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_abund_rel(subsistema = "lab") %>% 
   kable()
 ```
@@ -123,14 +123,12 @@ tabela_peld_exemplo %>%
 Utilize essa função para calcular a riqueza (S) em cada subsistema.
 
 ```{r, eval=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_riqueza()
 ```
 
 ```{r, echo=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_riqueza() %>% 
   kable()
 ```
@@ -140,14 +138,12 @@ tabela_peld_exemplo %>%
 Essa função retorna o índice de diversidade Shannon (H') para cada subsistema.
 
 ```{r, eval=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_shannon()
 ```
 
 ```{r, echo=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_shannon() %>% 
   kable()
 ```
@@ -157,14 +153,12 @@ tabela_peld_exemplo %>%
 Também é possível calcular o índice de Equitabilidade de Pielou (J') para cada subsistema.
 
 ```{r, eval=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_equitabilidade()
 ```
 
 ```{r, echo=FALSE}
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_equitabilidade() %>% 
   kable()
 ```

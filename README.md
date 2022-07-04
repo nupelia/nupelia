@@ -52,8 +52,10 @@ lacustris, por exemplo), são utilizadas as 3 primeiras letras do gênero.
 A tabela apresentada acima ficaria da seguinte forma:
 
 ``` r
-tabela_peld_exemplo %>% 
+tabela_peld_exemplo2 <- tabela_peld_exemplo %>%
   peld_abrevia_especie()
+
+tabela_peld_exemplo2
 ```
 
 | especie          | lab | lfe | rio |
@@ -79,8 +81,7 @@ Existem alguns argumento nessa função:
     agrupadas em **“Outros”**. 2 por padrão.
 
 ``` r
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_abund_rel()
 ```
 
@@ -96,8 +97,7 @@ Caso queira fazer para um subsistema específico, utilize o argumento
 `subsistema`:
 
 ``` r
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_abund_rel(subsistema = "lab")
 ```
 
@@ -114,8 +114,7 @@ tabela_peld_exemplo %>%
 Utilize essa função para calcular a riqueza (S) em cada subsistema.
 
 ``` r
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_riqueza()
 ```
 
@@ -131,8 +130,7 @@ Essa função retorna o índice de diversidade Shannon (H’) para cada
 subsistema.
 
 ``` r
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_shannon()
 ```
 
@@ -148,8 +146,7 @@ Também é possível calcular o índice de Equitabilidade de Pielou (J’)
 para cada subsistema.
 
 ``` r
-tabela_peld_exemplo %>% 
-  peld_abrevia_especie() %>% 
+tabela_peld_exemplo2 %>% 
   peld_equitabilidade()
 ```
 
