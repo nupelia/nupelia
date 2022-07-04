@@ -7,6 +7,7 @@
 
 [![Codecov test
 coverage](https://codecov.io/gh/Nupelia/nupelia/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Nupelia/nupelia?branch=master)
+[![R-CMD-check](https://github.com/Nupelia/nupelia/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Nupelia/nupelia/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Pacote para uso do Núcleo de Pesquisas em Limnologia, Ictiologia e
