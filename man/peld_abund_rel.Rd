@@ -7,7 +7,7 @@
 peld_abund_rel(
   dados,
   subsistema = "geral",
-  top_n = 14,
+  porcentagem_corte = 2,
   especie_var = especie,
   lab_var = lab,
   lfe_var = lfe,
@@ -19,7 +19,7 @@ peld_abund_rel(
 
 \item{subsistema}{Subsistema indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
 
-\item{top_n}{Número de espécies a serem consideradas antes de "Outros". 14 por padrao.}
+\item{porcentagem_corte}{A porcentagem da abundância relativa utilizada como corte para espécies. Espécies com porcentagem menor serão agrupadas em "Outros". 2 por padrão.}
 
 \item{especie_var}{Nome da variável referente a "Espécie". "especie" por padrao.}
 

@@ -28,7 +28,7 @@ peld_abrevia_especie <- function(dados){
 #'
 #' @param dados Tabela de dados do PELD
 #' @param subsistema Subsistema indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.
-#' @param top_n Número de espécies a serem consideradas antes de "Outros". 14 por padrao.
+#' @param porcentagem_corte A porcentagem da abundância relativa utilizada como corte para espécies. Espécies com porcentagem menor serão agrupadas em "Outros". 2 por padrão.
 #' @param especie_var Nome da variável referente a "Espécie". "especie" por padrao.
 #' @param lab_var Nome da variável referente a "Lagoas abertas". "lab" por padrao.
 #' @param lfe_var Nome da variável referente a "Lagoas fechadas". "lfe" por padrao.
@@ -37,7 +37,7 @@ peld_abrevia_especie <- function(dados){
 #' @export
 peld_abund_rel <- function(dados,
                            subsistema = "geral",
-                           top_n = 14,
+                           porcentagem_corte = 2,
                            especie_var = especie,
                            lab_var = lab,
                            lfe_var = lfe,
@@ -70,14 +70,15 @@ peld_abund_rel <- function(dados,
       dplyr::mutate(total_geral = sum(total_sp, na.rm = TRUE)) %>%
       dplyr::arrange(-total_sp) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(rank = dplyr::row_number(),
-                    rank = ifelse(rank > top_n, top_n+1, rank)) %>%
-      dplyr::group_by(rank) %>%
+      dplyr::mutate(abund_rel_porcentagem = ((total_sp/total_geral)*100),
+                    especie = ifelse(abund_rel_porcentagem < porcentagem_corte,
+                                     "Outros",
+                                     especie)) %>%
+      dplyr::group_by(especie) %>%
       dplyr::mutate(total_sp = sum(total_sp),
-                    abund_rel = total_sp/total_geral,
-                    especie = ifelse(rank > top_n, "Outros", especie)) %>%
-      head(top_n+1) %>%
-      dplyr::ungroup()
+                    abund_rel_porcentagem = round(((total_sp/total_geral)*100),2)) %>%
+      dplyr::ungroup() %>%
+      dplyr::distinct()
 
   }else{
     var <- subsistema
@@ -94,14 +95,15 @@ peld_abund_rel <- function(dados,
       dplyr::mutate(total_sp = sum(total_sp, na.rm = TRUE)) %>%
       dplyr::arrange(-total_sp) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(rank = dplyr::row_number(),
-                    rank = ifelse(rank > top_n, top_n+1,rank)) %>%
-      dplyr::group_by(rank) %>%
+      dplyr::mutate(abund_rel_porcentagem = ((total_sp/total_geral)*100),
+                    especie = ifelse(abund_rel_porcentagem < porcentagem_corte,
+                                     "Outros",
+                                     especie)) %>%
+      dplyr::group_by(especie) %>%
       dplyr::mutate(total_sp = sum(total_sp),
-                    abund_rel = total_sp/total_geral,
-                    especie = ifelse(rank > top_n, "Outros", especie)) %>%
-      head(top_n+1) %>%
-      dplyr::ungroup()
+                    abund_rel_porcentagem = round(((total_sp/total_geral)*100),2)) %>%
+      dplyr::ungroup() %>%
+      dplyr::distinct()
   }
 
   return(abund_rel)
