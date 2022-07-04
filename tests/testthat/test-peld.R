@@ -17,7 +17,7 @@ test_that("peld_abrevia_especie", {
   expect_true(nrow(data_abrevia) == 5)
 })
 
-test_that("peld_abund", {
+test_that("peld_abund_geral", {
 
   test_df <- data.frame(
     especie = rep(c("a","b","c"),5),
@@ -26,12 +26,12 @@ test_that("peld_abund", {
     rio = 3:17
   )
 
-  data_abund <- peld_abund_rel(test_df)
+  data_abund_geral <- peld_abund_rel(test_df)
 
-  expect_s3_class(data_abund, "tbl_df")
+  expect_s3_class(data_abund_geral, "tbl_df")
 })
 
-test_that("peld_riqueza", {
+test_that("peld_abund_lab", {
 
   test_df <- data.frame(
     especie = rep(c("a","b","c"),5),
@@ -40,12 +40,12 @@ test_that("peld_riqueza", {
     rio = 3:17
   )
 
-  data_riqueza <- peld_riqueza(test_df)
+  data_abund_lab <- peld_abund_rel(test_df, subsistema = "lab")
 
-  expect_s3_class(data_riqueza, "tbl_df")
+  expect_s3_class(data_abund_lab, "tbl_df")
 })
 
-test_that("peld_shannon", {
+test_that("peld_riqueza_geral", {
 
   test_df <- data.frame(
     especie = rep(c("a","b","c"),5),
@@ -54,12 +54,12 @@ test_that("peld_shannon", {
     rio = 3:17
   )
 
-  data_shannon <- peld_shannon(test_df)
+  data_riqueza_geral <- peld_riqueza(test_df)
 
-  expect_s3_class(data_shannon, "tbl_df")
+  expect_s3_class(data_riqueza_geral, "tbl_df")
 })
 
-test_that("peld_equitabilidade", {
+test_that("peld_riqueza_lab", {
 
   test_df <- data.frame(
     especie = rep(c("a","b","c"),5),
@@ -68,7 +68,63 @@ test_that("peld_equitabilidade", {
     rio = 3:17
   )
 
-  data_equitabilidade <- peld_equitabilidade(test_df)
+  data_riqueza_lab <- peld_riqueza(test_df,subsistema = "lab")
 
-  expect_s3_class(data_equitabilidade, "tbl_df")
+  expect_s3_class(data_riqueza_lab, "tbl_df")
+})
+
+test_that("peld_shannon_geral", {
+
+  test_df <- data.frame(
+    especie = rep(c("a","b","c"),5),
+    lab = 1:15,
+    lfe = 2:16,
+    rio = 3:17
+  )
+
+  data_shannon_geral <- peld_shannon(test_df)
+
+  expect_s3_class(data_shannon_geral, "tbl_df")
+})
+
+test_that("peld_shannon_lab", {
+
+  test_df <- data.frame(
+    especie = rep(c("a","b","c"),5),
+    lab = 1:15,
+    lfe = 2:16,
+    rio = 3:17
+  )
+
+  data_shannon_lab <- peld_shannon(test_df, subsistema = "lab")
+
+  expect_s3_class(data_shannon_lab, "tbl_df")
+})
+
+test_that("peld_equitabilidade_geral", {
+
+  test_df <- data.frame(
+    especie = rep(c("a","b","c"),5),
+    lab = 1:15,
+    lfe = 2:16,
+    rio = 3:17
+  )
+
+  data_equitabilidade_geral <- peld_equitabilidade(test_df)
+
+  expect_s3_class(data_equitabilidade_geral, "tbl_df")
+})
+
+test_that("peld_equitabilidade_lab", {
+
+  test_df <- data.frame(
+    especie = rep(c("a","b","c"),5),
+    lab = 1:15,
+    lfe = 2:16,
+    rio = 3:17
+  )
+
+  data_equitabilidade_lab <- peld_equitabilidade(test_df,subsistema = "lab")
+
+  expect_s3_class(data_equitabilidade_lab, "tbl_df")
 })
