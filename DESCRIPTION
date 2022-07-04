@@ -1,17 +1,16 @@
 Package: nupelia
-Title: Pacote para uso do Núcleo de Pesquisas em Limnologia, Ictiologia e Aquicultura (Nupélia).
+Title: Pacote para uso do Núcleo de Pesquisas em Limnologia, Ictiologia e Aquicultura (Nupélia)
 Version: 0.0.0.9000
 Authors@R: 
-    person("Bruno H.", "Mioto Stabile", , "brunomioto97@gmail.com", role = c("aut", "cre"),
+    person("Bruno H. M.", "Stabile", , "brunomioto97@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3524-537X"))
-Description: Utilize funções simples para auxiliar projetos do Nupélia, como na produção dos relatórios do PELD.
+Description: Utilize funções simples para auxiliar projetos do Nupélia, como na produção dos relatórios do PELD
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-URL: https://github.com/Nupelia/nupelia,
-    https://nupelia.github.io/nupelia/
-BugReports: https://github.com/Nupelia/nupelia/issues
+URL: https://nupelia.github.io/nupelia/
+BugReports: https://github.com/nupelia/nupelia/issues
 Suggests: 
     covr,
     testthat (>= 3.0.0)
