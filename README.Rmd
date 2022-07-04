@@ -84,7 +84,7 @@ Existem alguns argumento nessa função:
 
 - `dados`: A tabela de dados
 - `subsistema`: O subsistema indicado para análise. Pode ser "lab", "lfe", "rio" ou "geral" caso seja para todos. O padrão é "geral".
-- `top_n`: O número de espécies a serem apresentadas, além disso serão consideradas como **"Outros"**. O padrão é 14.
+- `porcentagem_corte`: A porcentagem da abundância relativa utilizada como corte para espécies. Espécies com porcentagem menor serão agrupadas em **"Outros"**. 2 por padrão.
 
 ```{r, eval=FALSE}
 tabela_peld_exemplo %>% 
@@ -170,6 +170,14 @@ tabela_peld_exemplo %>%
 
 O pacote possui um dataset com dados de todos os locais de amostragem já utilizados no PELD.
 Para uso, basta utilizar `peld_locais`.
+
+Serão retornados 36 ambientes, com as seguintes variáveis:
+
+- `ambiente_tipo`: Tipo do ambiente
+- `ambiente_nome`: Nome do ambiente
+- `ambiente_codigo`: Codigo do ambiente
+- `coordenada`: Coordenadas do ambiente, no padrão 00º'00.00"S, 00º00'00.00"W
+- `desc`: A descrição do ambiente
 
 ```{r, eval=TRUE}
 peld_locais
