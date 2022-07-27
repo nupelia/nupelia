@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nupelia
+# nupelia <a href="https://nupelia.github.io/nupelia/"><img src="man/figures/logo.png" align="right" height="120" /></a>
 
 <!-- badges: start -->
 
