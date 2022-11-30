@@ -407,10 +407,10 @@ peld_shannon_subsistema <- function(dados,
   shannon <- dados %>%
     tidyr::pivot_longer(
       cols = var,
-      names_to = "ambiente",
+      names_to = "subsistema",
       values_to = "n"
     ) %>%
-    dplyr::group_by(ambiente) %>%
+    dplyr::group_by(subsistema) %>%
     tidyr::drop_na(n) %>%
     dplyr::summarise(shannon = vegan::diversity(n, index = "shannon"))
 
