@@ -2,8 +2,10 @@
 
 export(peld_abrevia_especie)
 export(peld_abund_rel)
+export(peld_abund_rel_subsistema)
 export(peld_equitabilidade)
 export(peld_riqueza)
+export(peld_riqueza_subsistema)
 export(peld_shannon)
 importFrom(dplyr,"%>%")
 importFrom(utils,head)

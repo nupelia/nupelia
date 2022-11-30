@@ -6,17 +6,17 @@
 \usage{
 peld_riqueza(
   dados,
-  subsistema = "geral",
-  especie_var = especie,
-  lab_var = lab,
-  lfe_var = lfe,
-  rio_var = rio
+  ambiente = "geral",
+  especie_var = "especie",
+  lab_var = "lab",
+  lfe_var = "lfe",
+  rio_var = "rio"
 )
 }
 \arguments{
 \item{dados}{Tabela de dados do PELD}
 
-\item{subsistema}{Subsistema indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
+\item{ambiente}{Ambiente indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
 
 \item{especie_var}{Nome da variável referente a "Espécie". "especie" por padrao.}
 

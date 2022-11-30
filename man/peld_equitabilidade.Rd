@@ -6,7 +6,7 @@
 \usage{
 peld_equitabilidade(
   dados,
-  subsistema = "geral",
+  ambiente = "geral",
   especie_var = especie,
   lab_var = lab,
   lfe_var = lfe,
@@ -16,7 +16,7 @@ peld_equitabilidade(
 \arguments{
 \item{dados}{Tabela de dados do PELD}
 
-\item{subsistema}{Subsistema indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
+\item{ambiente}{Ambiente indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
 
 \item{especie_var}{Nome da variável referente a "Espécie". "especie" por padrao.}
 
