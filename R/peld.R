@@ -371,3 +371,98 @@ peld_riqueza_subsistema <- function(dados,
   return(riqueza)
 
 }
+
+#' PELD: Diversidade de Shannon (H') por subsistema
+#'
+#' @param dados Tabela de dados do PELD
+#' @param subsistema Subsistema indicado. Pode ser "ivinhema", "baia" ou "parana". "geral" por padrao.
+#' @param especie_var Nome da variável referente a "Espécie". "especie" por padrao.
+#' @param ivinhema_var Nome da variável referente a "ivinhema". "ivinhema" por padrao.
+#' @param baia_var Nome da variável referente a "baia". "baia" por padrao.
+#' @param parana_var Nome da variável referente a "parana". "parana" por padrao.
+#'
+#' @export
+peld_shannon <- function(dados,
+                         subsistema = "geral",
+                         especie_var = "especie",
+                         ivinhema_var = "ivi",
+                         baia_var = "bai",
+                         parana_var = "par"){
+
+
+
+  if(subsistema == "geral"){
+    var <- c({{ivinhema_var}}, {{baia_var}}, {{parana_var}})
+  }
+  if(subsistema == "ivinhema"){
+    var <- {{ivinhema_var}}
+  }
+  if(subsistema == "baia"){
+    var <- {{baia_var}}
+  }
+  if(subsistema == "parana"){
+    var <- {{parana_var}}
+  }
+
+  shannon <- dados %>%
+    tidyr::pivot_longer(
+      cols = var,
+      names_to = "ambiente",
+      values_to = "n"
+    ) %>%
+    dplyr::group_by(ambiente) %>%
+    tidyr::drop_na(n) %>%
+    dplyr::summarise(shannon = vegan::diversity(n, index = "shannon"))
+
+  return(shannon)
+
+}
+
+
+#' PELD: Equitabilidade de Pielou (J) por subsistema
+#'
+#' @param dados Tabela de dados do PELD
+#' @param subsistema Subsistema indicado. Pode ser "ivinhema", "baia" ou "parana". "geral" por padrao.
+#' @param especie_var Nome da variável referente a "Espécie". "especie" por padrao.
+#' @param ivinhema_var Nome da variável referente a "ivinhema". "ivinhema" por padrao.
+#' @param baia_var Nome da variável referente a "baia". "baia" por padrao.
+#' @param parana_var Nome da variável referente a "parana". "parana" por padrao.
+#'
+#' @export
+peld_equitabilidade <- function(dados,
+                                subsistema = "geral",
+                                especie_var = "especie",
+                                ivinhema_var = "ivi",
+                                baia_var = "bai",
+                                parana_var = "par"){
+
+
+
+  if(subsistema == "geral"){
+    var <- c({{ivinhema_var}}, {{baia_var}}, {{parana_var}})
+  }
+  if(subsistema == "ivinhema"){
+    var <- {{ivinhema_var}}
+  }
+  if(subsistema == "baia"){
+    var <- {{baia_var}}
+  }
+  if(subsistema == "parana"){
+    var <- {{parana_var}}
+  }
+
+  equit <- dados %>%
+    tidyr::pivot_longer(
+      cols = var,
+      names_to = "ambiente",
+      values_to = "n"
+    ) %>%
+    dplyr::group_by(ambiente) %>%
+    tidyr::drop_na(n) %>%
+    dplyr::summarise(equit = vegan::diversity(n, index = "shannon")/log(sum(n, na.rm = TRUE))
+    )
+
+  return(equit)
+
+}
+
