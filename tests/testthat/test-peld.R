@@ -68,7 +68,7 @@ test_that("peld_riqueza_lab", {
     rio = 3:17
   )
 
-  data_riqueza_lab <- peld_riqueza(test_df,subsistema = "lab")
+  data_riqueza_lab <- peld_riqueza(test_df,ambiente = "lab")
 
   expect_s3_class(data_riqueza_lab, "tbl_df")
 })
@@ -96,7 +96,7 @@ test_that("peld_shannon_lab", {
     rio = 3:17
   )
 
-  data_shannon_lab <- peld_shannon(test_df, subsistema = "lab")
+  data_shannon_lab <- peld_shannon(test_df, ambiente = "lab")
 
   expect_s3_class(data_shannon_lab, "tbl_df")
 })
@@ -124,7 +124,7 @@ test_that("peld_equitabilidade_lab", {
     rio = 3:17
   )
 
-  data_equitabilidade_lab <- peld_equitabilidade(test_df,subsistema = "lab")
+  data_equitabilidade_lab <- peld_equitabilidade(test_df,ambiente = "lab")
 
   expect_s3_class(data_equitabilidade_lab, "tbl_df")
 })
