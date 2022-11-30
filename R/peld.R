@@ -454,10 +454,10 @@ peld_equitabilidade_subsistema <- function(dados,
   equit <- dados %>%
     tidyr::pivot_longer(
       cols = var,
-      names_to = "ambiente",
+      names_to = "subsistema",
       values_to = "n"
     ) %>%
-    dplyr::group_by(ambiente) %>%
+    dplyr::group_by(subsistema) %>%
     tidyr::drop_na(n) %>%
     dplyr::summarise(equit = vegan::diversity(n, index = "shannon")/log(sum(n, na.rm = TRUE))
     )
