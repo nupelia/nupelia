@@ -25,6 +25,9 @@
     <loc>https://nupelia.github.io/nupelia/reference/peld_abund_rel.html</loc>
   </url>
   <url>
+    <loc>https://nupelia.github.io/nupelia/reference/peld_abund_rel_subsistema.html</loc>
+  </url>
+  <url>
     <loc>https://nupelia.github.io/nupelia/reference/peld_equitabilidade.html</loc>
   </url>
   <url>
@@ -32,6 +35,9 @@
   </url>
   <url>
     <loc>https://nupelia.github.io/nupelia/reference/peld_riqueza.html</loc>
+  </url>
+  <url>
+    <loc>https://nupelia.github.io/nupelia/reference/peld_riqueza_subsistema.html</loc>
   </url>
   <url>
     <loc>https://nupelia.github.io/nupelia/reference/peld_shannon.html</loc>
