@@ -281,6 +281,7 @@ peld_abund_rel_subsistema <- function(dados,
                                      "Outros",
                                      especie)) %>%
       dplyr::group_by(especie) %>%
+      dplyr::add_count(name = "n_outros") %>%
       dplyr::mutate(total_sp = sum(total_sp),
                     abund_rel_porcentagem = round(((total_sp/total_geral)*100),2)) %>%
       dplyr::ungroup() %>%
@@ -315,6 +316,7 @@ peld_abund_rel_subsistema <- function(dados,
                                      "Outros",
                                      especie)) %>%
       dplyr::group_by(especie) %>%
+      dplyr::add_count(name = "n_outros") %>%
       dplyr::mutate(total_sp = sum(total_sp),
                     abund_rel_porcentagem = round(((total_sp/total_geral)*100),2)) %>%
       dplyr::ungroup() %>%
