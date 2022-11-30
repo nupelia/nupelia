@@ -382,7 +382,7 @@ peld_riqueza_subsistema <- function(dados,
 #' @param parana_var Nome da variável referente a "parana". "parana" por padrao.
 #'
 #' @export
-peld_shannon <- function(dados,
+peld_shannon_subsistema <- function(dados,
                          subsistema = "geral",
                          especie_var = "especie",
                          ivinhema_var = "ivi",
@@ -429,7 +429,7 @@ peld_shannon <- function(dados,
 #' @param parana_var Nome da variável referente a "parana". "parana" por padrao.
 #'
 #' @export
-peld_equitabilidade <- function(dados,
+peld_equitabilidade_subsistema <- function(dados,
                                 subsistema = "geral",
                                 especie_var = "especie",
                                 ivinhema_var = "ivi",

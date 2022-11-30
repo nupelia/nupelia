@@ -6,36 +6,19 @@
 \usage{
 peld_shannon(
   dados,
-  subsistema = "geral",
-  especie_var = "especie",
-  ivinhema_var = "ivi",
-  baia_var = "bai",
-  parana_var = "par"
-)
-
-peld_shannon(
-  dados,
-  subsistema = "geral",
-  especie_var = "especie",
-  ivinhema_var = "ivi",
-  baia_var = "bai",
-  parana_var = "par"
+  ambiente = "geral",
+  especie_var = especie,
+  lab_var = lab,
+  lfe_var = lfe,
+  rio_var = rio
 )
 }
 \arguments{
 \item{dados}{Tabela de dados do PELD}
 
-\item{subsistema}{Subsistema indicado. Pode ser "ivinhema", "baia" ou "parana". "geral" por padrao.}
+\item{ambiente}{Ambiente indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
 
 \item{especie_var}{Nome da variável referente a "Espécie". "especie" por padrao.}
-
-\item{ivinhema_var}{Nome da variável referente a "ivinhema". "ivinhema" por padrao.}
-
-\item{baia_var}{Nome da variável referente a "baia". "baia" por padrao.}
-
-\item{parana_var}{Nome da variável referente a "parana". "parana" por padrao.}
-
-\item{ambiente}{Ambiente indicado. Pode ser "geral", "lab", "lfe" ou "rio". "geral" por padrao.}
 
 \item{lab_var}{Nome da variável referente a "Lagoas abertas". "lab" por padrao.}
 
@@ -45,6 +28,4 @@ peld_shannon(
 }
 \description{
 PELD: Diversidade de Shannon (H')
-
-PELD: Diversidade de Shannon (H') por subsistema
 }
