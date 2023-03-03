@@ -2,6 +2,7 @@
 
 export(citations_info)
 export(citations_year)
+export(get_percentage_scopus)
 export(peld_abrevia_especie)
 export(peld_abund_rel)
 export(peld_abund_rel_subsistema)
