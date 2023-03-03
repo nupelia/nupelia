@@ -19,8 +19,12 @@ get_percentage_scopus <- function(journal_id = NULL, journal_name = NULL, year =
 
     journal_id <- tabela_scopus %>%
       dplyr::filter(journal %in% journal_name) %>%
-      pull(id)
+      dplyr::pull(id)
 
+  }
+
+  if(length(journal_id) == 0){
+    cli::cli_abort("It was not possible to find {journal_name} in tabela_scopus.")
   }
 
   # if(is.null(journal_name)){
@@ -59,7 +63,7 @@ get_percentage_scopus <- function(journal_id = NULL, journal_name = NULL, year =
   }
 
   if(best_rank == TRUE){
-    resultado <- slice_head(resultado,n = 1)
+    resultado <- dplyr::slice_head(resultado,n = 1)
   }
 
   return(resultado)
