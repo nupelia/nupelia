@@ -22,6 +22,9 @@
     <loc>https://nupelia.github.io/nupelia/reference/citations_year.html</loc>
   </url>
   <url>
+    <loc>https://nupelia.github.io/nupelia/reference/get_percentage_scopus.html</loc>
+  </url>
+  <url>
     <loc>https://nupelia.github.io/nupelia/reference/ids_gscholar_nupelia.html</loc>
   </url>
   <url>
@@ -56,5 +59,8 @@
   </url>
   <url>
     <loc>https://nupelia.github.io/nupelia/reference/peld_shannon_subsistema.html</loc>
+  </url>
+  <url>
+    <loc>https://nupelia.github.io/nupelia/reference/tabela_scopus.html</loc>
   </url>
 </urlset>
